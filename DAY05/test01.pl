@@ -1,0 +1,46 @@
+student(amal).
+studies(computing,arun).
+studies(maths,kannan).
+studies(physics,vasudevan).
+studies(physics,krishna).
+
+employee(john,hr,director,25).
+employee(denis,finance,general_Manager,21).
+employee(fleming,marketing,manager,15).
+employee(bozena,finance,director,06).
+employee(zofia,hr,manage,25).
+employee(urban,it,network_eng,12).
+employee(pilar,admin,secretary,05).
+employee(kura,admin,manager,10).
+employee(jasmine,it,intern,09).
+employee(george,marketing,intern,07).
+
+
+salary(director,90000,54).
+salary(general_Manager,80000,54).
+salary(manager,65000,45).
+salary(secretary,50000,26).
+salary(network_Engineer,60000,34).
+salary(intern,30000,26).
+
+print_pos([]).
+print_pos([Name|T]):-
+    employee(Name,Dept,Pos,_),
+    write(Name),write('-'),write(Dept),write('-'),
+    write(Pos),nl,print_pos(T).
+
+print_sala([]).
+print_sala([Name|T]):-
+    employee(Name,_,Pos,_),
+    salary(Pos,Sal,_),
+    write(Name), write('-'), write(Sal),nl,print_sala(T).
+
+
+remaining_leave(Name,Remaining):-employee(Name,_,Pos,Taken),salary(Pos,_,Annual),Remaining is Annual - Taken.
+
+bonus_rate(Days,60):-
+    Days>30.
+bonus_rate(Days,50):-
+    Days >=26,
+    Days
+
